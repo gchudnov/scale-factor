@@ -1,2 +1,3 @@
 # scale-factor
-> Calculate aspect ratios for image scaling
+> Calculate scale factors for image resizing
+

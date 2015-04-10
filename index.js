@@ -19,7 +19,7 @@ var modifier = {
 };
 
 /**
- * Calculates aspect rations for image scaling
+ * Calculates scale factors for image resizing
  * @param {number} originalWidth - the original bitmap width
  * @param {number} originalHeight - the original bitmap height
  * @param {number} desiredWidth - the desired width
@@ -86,4 +86,3 @@ function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desire
 module.exports.calc = makeScaleTransform2;
 module.exports.mode = mode;
 module.exports.modifier = modifier;
-
