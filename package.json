@@ -1,0 +1,27 @@
+{
+  "name": "scale-factor",
+  "version": "0.1.0",
+  "description": "Calculate aspect ratios for image scaling",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gchudnov/scale-factor.git"
+  },
+  "keywords": [
+    "image",
+    "scale"
+  ],
+  "author": "Grigoriy Chudnov <g.chudnov@gmail.com> (https://github.com/gchudnov)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gchudnov/scale-factor/issues"
+  },
+  "homepage": "https://github.com/gchudnov/scale-factor",
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^5.2.0"
+  }
+}
