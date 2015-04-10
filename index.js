@@ -20,12 +20,12 @@ var modifier = {
 
 /**
  * Calculates aspect rations for image scaling
- * @param originalWidth - the original bitmap width
- * @param originalHeight - the original bitmap height
- * @param desiredWidth - the desired width
- * @param desiredHeight - the desired height
- * @param scaleMode - a combination of mode values
- * @param modeModifier - a combination of modifiers
+ * @param {number} originalWidth - the original bitmap width
+ * @param {number} originalHeight - the original bitmap height
+ * @param {number} desiredWidth - the desired width
+ * @param {number} desiredHeight - the desired height
+ * @param {object} scaleMode - a combination of mode values
+ * @param {object} modeModifier - a combination of modifiers
  * @returns {{factorX: number, factorY: number}}
  */
 function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desiredHeight, scaleMode, modeModifier) {
