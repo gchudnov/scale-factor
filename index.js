@@ -1,11 +1,14 @@
+'use strict';
+
 /**
  * A collection of scale modes
- * @type {{none: number, stretch: number, fit: number, no_scale_up: number, detect_proportions: number, fit_no_scale_up: number}}
+ * @type {{none: number, stretch: number, fit: number, fit_any: number}}
  */
 var mode = {
   none: 0,
-  stretch: 1,
-  fit: 2
+  stretch: 1,  // do not respect aspect ratio
+  fit: 2,      // fit into the target bounds
+  fit_any: 4   // fit any dimension into the target bounds
 };
 
 /**
@@ -14,7 +17,7 @@ var mode = {
  */
 var modifier = {
   none: 0,
-  no_scale_up: 1,
+  no_scale_up: 1,       // do not scale up
   detect_proportions: 2 // detect if the picture width & height are need to be swapped
 };
 
@@ -43,22 +46,19 @@ function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desire
   var factorY = 1;
 
   if(scaleMode & mode.none) {
-    // NONE
     factorX = factorY = (1.0);
   }
   else if(scaleMode & mode.stretch) {
-    // STRETCH
     factorX = desiredWidth / originalWidth;
     factorY = desiredHeight / originalHeight;
   }
-  else if(scaleMode & mode.fit) {
-    // FIT
+  else if((scaleMode & mode.fit) || (scaleMode & mode.fit_any)) {
     if(modeModifier & modifier.detect_proportions) {
       var p1 = desiredWidth / desiredHeight;
       var p2 = originalWidth / originalHeight;
 
       // swap width & height
-      if((p1 > (1.0) && p2 < (1.0)) || (p1 < (1.0) && p2 > (1.0))) {
+      if((p1 > 1.0 && p2 < 1.0) || (p1 < 1.0 && p2 > 1.0)) {
         var t = desiredWidth;
         desiredWidth = desiredHeight;
         desiredHeight = t;
@@ -68,9 +68,8 @@ function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desire
     var k1 = desiredWidth / originalWidth;
     var k2 = desiredHeight / originalHeight;
 
-    var k = Math.min(k1, k2);
+    var k = ((scaleMode & mode.fit) ? Math.min(k1, k2) : Math.max(k1, k2));
 
-    // If we don't want the image to be scaled more than its original size, include the special coefficient check
     if(modeModifier & modifier.no_scale_up) {
       if(k > 1.0)
         k = 1.0; // do not scale up small images at all.
@@ -81,7 +80,6 @@ function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desire
 
   return { factorX: factorX, factorY: factorY };
 }
-
 
 module.exports.calc = makeScaleTransform2;
 module.exports.mode = mode;
