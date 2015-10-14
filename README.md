@@ -44,7 +44,7 @@ or
 * originalHeight: `number`
 * desiredWidth: `number`
 * desiredHeight: `number`
-* scaleMode: `mode.none | mode.fit | mode.stretch`
+* scaleMode: `mode.none | mode.fit | mode.fit_any | mode.stretch`
 * modeModifier: `modifier.none | modifier.no_scale_up | modifier.detect_proportions`
 
 `scale`-function returns an object: `{ factorX: number, factorY: number }`
