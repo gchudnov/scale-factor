@@ -70,9 +70,8 @@ function makeScaleTransform2(originalWidth, originalHeight, desiredWidth, desire
 
     var k = ((scaleMode & mode.fit) ? Math.min(k1, k2) : Math.max(k1, k2));
 
-    if(modeModifier & modifier.no_scale_up) {
-      if(k > 1.0)
-        k = 1.0; // do not scale up small images at all.
+    if((k > 1.0) && (modeModifier & modifier.no_scale_up)) {
+      k = 1.0;
     }
 
     factorX = factorY = k;
