@@ -1,6 +1,6 @@
 {
   "name": "scale-factor",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Calculate scale factors for image resizing",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/gchudnov/scale-factor",
   "devDependencies": {
-    "mocha": "^2.3.3",
-    "should": "^7.1.0"
+    "mocha": "^2.4.5",
+    "should": "^8.3.0"
   }
 }
